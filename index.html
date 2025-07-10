@@ -37,6 +37,8 @@
       max-width: 100%;
       border-radius: 6px;
       margin-bottom: 1rem;
+      height: 240px;
+      object-fit: cover;
     }
     a, a:hover {
       color: #ffc107;
@@ -103,7 +105,7 @@
     <div class="row">
       <div class="col-md-4">
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Lavender Candle" class="product-img" />
+          <img src="https://images.unsplash.com/photo-1622457698891-c1f79ac0a09b?auto=format&fit=crop&w=400&q=80" alt="Lavender Calm" class="product-img" />
           <h5>Lavender Calm</h5>
           <p>Soothing lavender scent to ease your mind.</p>
           <button id="buyLavender" class="btn btn-warning">Buy Now</button>
@@ -111,7 +113,7 @@
       </div>
       <div class="col-md-4">
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1526403220371-8f22d1e77b3a?auto=format&fit=crop&w=400&q=80" alt="Vanilla Candle" class="product-img" />
+          <img src="https://images.unsplash.com/photo-1618415401652-6d21f4a168b0?auto=format&fit=crop&w=400&q=80" alt="Vanilla Dream" class="product-img" />
           <h5>Vanilla Dream</h5>
           <p>Warm vanilla fragrance for cozy evenings.</p>
           <button id="buyVanilla" class="btn btn-warning">Buy Now</button>
@@ -119,7 +121,7 @@
       </div>
       <div class="col-md-4">
         <div class="product-card">
-          <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?auto=format&fit=crop&w=400&q=80" alt="Citrus Candle" class="product-img" />
+          <img src="https://images.unsplash.com/photo-1602526432604-029f33856c08?auto=format&fit=crop&w=400&q=80" alt="Citrus Fresh" class="product-img" />
           <h5>Citrus Fresh</h5>
           <p>Invigorating citrus scent to energize your space.</p>
           <button id="buyCitrus" class="btn btn-warning">Buy Now</button>
@@ -179,7 +181,7 @@
 
     // Track Contact form submission
     document.getElementById('contactForm').addEventListener('submit', function(event) {
-      event.preventDefault(); // Prevent actual submission
+      event.preventDefault();
       trackEvent('contact_form_submit');
       alert('Thank you for contacting us!');
       this.reset();
