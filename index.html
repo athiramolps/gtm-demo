@@ -20,8 +20,8 @@
     body {
       background-color: #121212;
       color: #f0f0f0;
-      padding: 2rem;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding-top: 60px;
     }
     .btn {
       margin: 10px 5px;
@@ -38,26 +38,68 @@
       border-radius: 6px;
       margin-bottom: 1rem;
     }
-    .gtm-status {
-      font-size: 0.9rem;
-      margin-top: 1rem;
-    }
     a, a:hover {
       color: #ffc107;
       text-decoration: none;
     }
+    section {
+      padding: 60px 0;
+    }
+    nav.navbar {
+      background-color: #212121;
+    }
+    .gtm-status {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
+
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PRB4SC5Z"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <div class="container">
-    <h1 class="mb-4">Bliss Candle Store</h1>
-    <p>Relax with our hand-crafted scented candles.</p>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-warning" href="#">Bliss Candles</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link text-light" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#products">Products</a></li>
+          <li class="nav-item"><a class="nav-link text-light" href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
+  <!-- About -->
+  <section id="about" class="container">
+    <h2>About Us</h2>
+    <p>Welcome to Bliss Candle Store! We craft high-quality, hand-poured scented candles that create relaxing and warm atmospheres in your home. Our mission is to bring serenity and joy through our beautiful candle collections.</p>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="container">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Custom candle orders tailored to your preferences</li>
+      <li>Gift sets for special occasions</li>
+      <li>Workshops on candle making</li>
+      <li>Subscription boxes with monthly candle selections</li>
+    </ul>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="container">
+    <h2>Our Products</h2>
     <div class="row">
       <div class="col-md-4">
         <div class="product-card">
@@ -67,7 +109,6 @@
           <button id="buyLavender" class="btn btn-warning">Buy Now</button>
         </div>
       </div>
-
       <div class="col-md-4">
         <div class="product-card">
           <img src="https://images.unsplash.com/photo-1526403220371-8f22d1e77b3a?auto=format&fit=crop&w=400&q=80" alt="Vanilla Candle" class="product-img" />
@@ -76,7 +117,6 @@
           <button id="buyVanilla" class="btn btn-warning">Buy Now</button>
         </div>
       </div>
-
       <div class="col-md-4">
         <div class="product-card">
           <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?auto=format&fit=crop&w=400&q=80" alt="Citrus Candle" class="product-img" />
@@ -86,13 +126,34 @@
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="gtm-status">
-      <p><strong>GTM Status:</strong> <span id="gtmStatus">Loading...</span></p>
-      <p><strong>Events Tracked:</strong> <span id="eventCount">0</span></p>
-    </div>
+  <!-- Contact Us -->
+  <section id="contact" class="container">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" id="name" placeholder="Your full name" required />
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="email" placeholder="name@example.com" required />
+      </div>
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <textarea class="form-control" id="message" rows="3" placeholder="Write your message here..." required></textarea>
+      </div>
+      <button type="submit" id="submitContact" class="btn btn-primary">Send Message</button>
+    </form>
+  </section>
+
+  <div class="container gtm-status">
+    <p><strong>GTM Status:</strong> <span id="gtmStatus">Loading...</span></p>
+    <p><strong>Events Tracked:</strong> <span id="eventCount">0</span></p>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     // GTM status check
     window.addEventListener('load', () => {
@@ -111,10 +172,18 @@
       }
     }
 
-    // Button event listeners
+    // Track Buy buttons
     document.getElementById('buyLavender').addEventListener('click', () => trackEvent('buy_lavender'));
     document.getElementById('buyVanilla').addEventListener('click', () => trackEvent('buy_vanilla'));
     document.getElementById('buyCitrus').addEventListener('click', () => trackEvent('buy_citrus'));
+
+    // Track Contact form submission
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent actual submission
+      trackEvent('contact_form_submit');
+      alert('Thank you for contacting us!');
+      this.reset();
+    });
   </script>
 </body>
 </html>
