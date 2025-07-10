@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GTM Demo - Event Tracking</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bliss Candle Store</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- Google Tag Manager -->
   <script>
@@ -17,9 +17,35 @@
   <!-- End Google Tag Manager -->
 
   <style>
-    body { background-color: #121212; color: #f0f0f0; padding: 2rem; }
-    .btn { margin: 10px; }
-    .gtm-status { font-size: 0.9rem; margin-top: 1rem; }
+    body {
+      background-color: #121212;
+      color: #f0f0f0;
+      padding: 2rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .btn {
+      margin: 10px 5px;
+    }
+    .product-card {
+      background-color: #1e1e1e;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+    .product-img {
+      max-width: 100%;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+    }
+    .gtm-status {
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    a, a:hover {
+      color: #ffc107;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -29,11 +55,37 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <div class="container">
-    <h1>Google Tag Manager Demo</h1>
-    <p>Test buttons for click tracking:</p>
-    <button id="contactBtn" class="btn btn-primary">Contact Us</button>
-    <button id="phoneBtn" class="btn btn-warning">Call Us</button>
-    <button id="emailBtn" class="btn btn-success">Email Us</button>
+    <h1 class="mb-4">Bliss Candle Store</h1>
+    <p>Relax with our hand-crafted scented candles.</p>
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Lavender Candle" class="product-img" />
+          <h5>Lavender Calm</h5>
+          <p>Soothing lavender scent to ease your mind.</p>
+          <button id="buyLavender" class="btn btn-warning">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1526403220371-8f22d1e77b3a?auto=format&fit=crop&w=400&q=80" alt="Vanilla Candle" class="product-img" />
+          <h5>Vanilla Dream</h5>
+          <p>Warm vanilla fragrance for cozy evenings.</p>
+          <button id="buyVanilla" class="btn btn-warning">Buy Now</button>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="product-card">
+          <img src="https://images.unsplash.com/photo-1522770179533-24471fcdba45?auto=format&fit=crop&w=400&q=80" alt="Citrus Candle" class="product-img" />
+          <h5>Citrus Fresh</h5>
+          <p>Invigorating citrus scent to energize your space.</p>
+          <button id="buyCitrus" class="btn btn-warning">Buy Now</button>
+        </div>
+      </div>
+    </div>
 
     <div class="gtm-status">
       <p><strong>GTM Status:</strong> <span id="gtmStatus">Loading...</span></p>
@@ -48,7 +100,7 @@
       document.getElementById('gtmStatus').textContent = gtmCheck ? 'Active' : 'Not Loaded';
     });
 
-    // Track click events
+    // Event counter
     let eventCounter = 0;
     function trackEvent(eventName) {
       eventCounter++;
@@ -59,10 +111,10 @@
       }
     }
 
-    // Attach button click listeners
-    document.getElementById('contactBtn').addEventListener('click', () => trackEvent('contact_click'));
-    document.getElementById('phoneBtn').addEventListener('click', () => trackEvent('phone_click'));
-    document.getElementById('emailBtn').addEventListener('click', () => trackEvent('email_click'));
+    // Button event listeners
+    document.getElementById('buyLavender').addEventListener('click', () => trackEvent('buy_lavender'));
+    document.getElementById('buyVanilla').addEventListener('click', () => trackEvent('buy_vanilla'));
+    document.getElementById('buyCitrus').addEventListener('click', () => trackEvent('buy_citrus'));
   </script>
 </body>
 </html>
